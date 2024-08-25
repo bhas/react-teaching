@@ -34,6 +34,10 @@ styling components
  - component styles
  - className
 
+ creating pages in Next.js
+ - simple pages
+ - nested pages
+
 
 
 todo example js add component
