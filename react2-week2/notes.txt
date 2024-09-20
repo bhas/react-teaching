@@ -1,0 +1,45 @@
+
+
+Introduction
+    Last weeks topic: Routing, refs, component library
+    how it is going?
+
+
+
+
+Context
+
+    What is the Context API?
+        solves prop drilling and global state
+
+    When to use Context API?
+        ask class?
+
+    Benefits of using Context API
+        class exercise
+
+    Providing values using a Context
+
+    receiving values from a Context
+
+    updating values in a Context
+
+
+Context exercise
+    create theme provider
+    using mat ui with globalization
+
+
+
+Reducer
+
+
+Reducer exercises
+    Build counter context
+    Create a todo context with a reducer
+    
+
+Combining context and reducers
+
+
+
