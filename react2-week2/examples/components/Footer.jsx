@@ -1,12 +1,12 @@
 "use client";
 
-import React from "react";
+import React, { useContext } from "react";
 import { Container, Typography, Link, Button, Box, Stack } from "@mui/material";
 import { Roles } from "@/enums/Roles";
+import { CurrentUserContext } from "@/contexts/CurrentUserContext";
 
 export default function Footer() {
-  const currentUser = "Bjorn";
-  const currentUseRole = Roles.guardian;
+  const currentUser = useContext(CurrentUserContext);
   const onDemandIcecream = () => {
     alert(
       "A strongly worded email has been sent to Hack Your Future that you demand icecream now!"
@@ -36,7 +36,7 @@ export default function Footer() {
         </Link>
       </Stack>
 
-      {currentUseRole === Roles.crawer && (
+      {currentUser?.role === Roles.crawer && (
         <Button
           variant="contained"
           color="error"

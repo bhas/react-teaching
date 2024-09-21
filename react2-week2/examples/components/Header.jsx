@@ -10,13 +10,15 @@ import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import { useState } from "react";
+import { useContext, useReducer, useState } from "react";
 import { Button, Snackbar, Stack, Tooltip } from "@mui/material";
 import Image from "next/image";
+import { CurrentUserContext } from "@/contexts/CurrentUserContext";
 
 export default function Header({onLogout}) {
   const [anchorEl, setAnchorEl] = useState(null);
   const [showToast, setShowToast] = useState(false);
+  const currentUser = useContext(CurrentUserContext);
 
   const handleMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -32,7 +34,8 @@ export default function Header({onLogout}) {
     onLogout();
   }
 
-  const currentUser = "Bjørn";
+  console.log(currentUser);
+
   return (
     <AppBar position="static">
       <Toolbar>
@@ -54,7 +57,7 @@ export default function Header({onLogout}) {
           <>
             <IconButton color="inherit" onClick={handleMenuOpen}>
               <Typography fontSize="14" marginRight={1}>
-                {currentUser}
+                {currentUser.name}
               </Typography>
               <AccountCircleIcon />
             </IconButton>
@@ -69,9 +72,10 @@ export default function Header({onLogout}) {
           </>
         )}
         <Snackbar
-        anchorOrigin={{ vertical: "top", horizontal: "right" }}
+        anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
         open={showToast}
-        autoHideDuration={3000}
+        onClose={() => setShowToast(false)}
+        autoHideDuration={2000}
         message="Successfully logged out"
       />
       </Toolbar>

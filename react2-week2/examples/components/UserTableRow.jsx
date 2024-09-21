@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Select, MenuItem, Switch, Icon, Button, Stack, Chip } from '@mui/material';
 import { Roles } from '@/enums/Roles';
 import IcecreamIcon from '@mui/icons-material/Icecream';
-import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
+import { CurrentUserContext } from '@/contexts/CurrentUserContext';
 
 export default function UserTableRow({ user, onGrantIcecream, onExpel }) {
+
+    const currentUser = useContext(CurrentUserContext);
 
     const getFlavourColor = (flavour) => {
         switch (flavour) {
@@ -19,7 +21,6 @@ export default function UserTableRow({ user, onGrantIcecream, onExpel }) {
         }
     }
 
-    const currentUserRole = Roles.crawer;
     return (
         <TableRow>
             <TableCell>{user.username}</TableCell>
@@ -37,7 +38,7 @@ export default function UserTableRow({ user, onGrantIcecream, onExpel }) {
                 {user.icecreams}
             </TableCell>
             <TableCell>
-                { currentUserRole === Roles.guardian &&
+                { currentUser?.role === Roles.guardian &&
                     <Stack direction="row" spacing={1}>
                         <Button variant="outlined" endIcon={<IcecreamIcon />} onClick={() => onGrantIcecream()}>Grant Icecream</Button>
                         <Button variant="outlined" color="error" onClick={() => onExpel()}>Expel</Button>

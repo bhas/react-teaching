@@ -16,6 +16,7 @@ import { Icecream } from "@mui/icons-material";
 import styles from "./page.module.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { CurrentUserContext } from "@/contexts/CurrentUserContext";
 
 const teamMembers = [
   {
@@ -87,7 +88,7 @@ export default function Home() {
 
   const handleOnLogout = () => {
     setCurrentUser(null);
-  }
+  };
 
   const handleRoleChange = (role) => {
     setCurrentUser({ ...currentUser, role: role });
@@ -142,12 +143,14 @@ export default function Home() {
   };
 
   return (
-    <Container className={styles.container} maxWidth="md">
-      <Header onLogout={handleOnLogout}></Header>
-      <Box sx={{ margin: 3 }}>
-        {!currentUser ? renderUnauthorizedPage() : renderPageContent()}
-      </Box>
-      <Footer></Footer>
-    </Container>
+    <CurrentUserContext.Provider value={currentUser}>
+      <Container className={styles.container} maxWidth="md">
+        <Header onLogout={handleOnLogout}></Header>
+        <Box sx={{ margin: 3 }}>
+          {!currentUser ? renderUnauthorizedPage() : renderPageContent()}
+        </Box>
+        <Footer></Footer>
+      </Container>
+    </CurrentUserContext.Provider>
   );
 }
