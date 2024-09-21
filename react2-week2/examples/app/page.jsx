@@ -10,9 +10,12 @@ import Welcome from "@/components/Welcome";
 import UserTable from "@/components/UserTable";
 import { Roles } from "@/enums/Roles";
 import TeamSection from "@/components/TeamSection";
-import { Box, Stack, Typography } from "@mui/material";
-import Image from 'next/image';
+import { Box, Container, Stack, Typography } from "@mui/material";
+import Image from "next/image";
 import { Icecream } from "@mui/icons-material";
+import styles from "./page.module.css";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const teamMembers = [
   {
@@ -42,7 +45,7 @@ const teamMembers = [
   {
     id: 4,
     team: "kangaroo",
-    username: "Bjørn Vinther",
+    username: "Kaizad",
     role: Roles.crawer,
     icecreams: 0,
     favoriteFlavour: "vanilla",
@@ -75,8 +78,16 @@ const teamMembers = [
 
 export default function Home() {
   const [currentUser, setCurrentUser] = useState(null);
-  const [team1, setTeam1] = useState(teamMembers.filter(x => x.team === "panda"));
-  const [team2, setTeam2] = useState(teamMembers.filter(x => x.team === "kangaroo"));
+  const [team1, setTeam1] = useState(
+    teamMembers.filter((x) => x.team === "panda")
+  );
+  const [team2, setTeam2] = useState(
+    teamMembers.filter((x) => x.team === "kangaroo")
+  );
+
+  const handleOnLogout = () => {
+    setCurrentUser(null);
+  }
 
   const renderUnauthorizedPage = () => {
     return (
@@ -86,13 +97,30 @@ export default function Home() {
           If you want to get delicious icecream you need to log in.
         </Typography>
         <Image src="/icecream.png" width={200} height={200}></Image>
-        <Button variant="outlined" size="large" color="primary" onClick={() => setCurrentUser({name: "Bjørn", role: Roles.crawer})}>
+        <Button
+          variant="outlined"
+          size="large"
+          color="primary"
+          onClick={() => setCurrentUser({ name: "Bjørn", role: Roles.crawer })}
+        >
           Log In as Bjørn
         </Button>
-        <Button variant="contained" size="large" color="primary" onClick={() => setCurrentUser({name: "Kaizad", role: Roles.guardian})}>
+        <Button
+          variant="contained"
+          size="large"
+          color="primary"
+          onClick={() =>
+            setCurrentUser({ name: "Kaizad", role: Roles.guardian })
+          }
+        >
           Log In as Kaizad
         </Button>
-        <Button variant="outlined" size="large" color="primary" onClick={() => setCurrentUser({name: "David", role: Roles.crawer})}>
+        <Button
+          variant="outlined"
+          size="large"
+          color="primary"
+          onClick={() => setCurrentUser({ name: "David", role: Roles.crawer })}
+        >
           Log In as David
         </Button>
       </Stack>
@@ -110,8 +138,12 @@ export default function Home() {
   };
 
   return (
-    <Box sx={{ margin: 3 }}>
-      {!currentUser ? renderUnauthorizedPage() : renderPageContent()}
-    </Box>
+    <Container className={styles.container} maxWidth="md">
+      <Header onLogout={handleOnLogout}></Header>
+      <Box sx={{ margin: 3 }}>
+        {!currentUser ? renderUnauthorizedPage() : renderPageContent()}
+      </Box>
+      <Footer></Footer>
+    </Container>
   );
 }
