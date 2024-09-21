@@ -12,7 +12,7 @@ export default function UserTable({ users }) {
                         <TableCell>Member</TableCell>
                         <TableCell>Role</TableCell>
                         <TableCell>Favorite Flavour</TableCell>
-                        <TableCell>Icecreams received</TableCell>
+                        <TableCell>Icecreams</TableCell>
                         <TableCell>Actions</TableCell>
                     </TableRow>
                 </TableHead>

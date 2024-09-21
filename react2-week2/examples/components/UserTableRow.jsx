@@ -4,10 +4,7 @@ import { Roles } from '@/enums/Roles';
 import IcecreamIcon from '@mui/icons-material/Icecream';
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 
-export default function UserTableRow({ user }) {
-
-    const handleIceCreamChange = (event) => {
-    };
+export default function UserTableRow({ user, onGrantIcecream, onExpel }) {
 
     const isGuardian = true;
     return (
@@ -20,13 +17,13 @@ export default function UserTableRow({ user }) {
                 {user.favoriteFlavour}
             </TableCell>
             <TableCell>
-                {user.favoriteFlavour}
+                {user.icecreams}
             </TableCell>
             <TableCell>
                 { isGuardian &&
                     <Stack direction="row" spacing={1}>
-                        <Button variant="outlined" endIcon={<IcecreamIcon />}>Grant Icecream</Button>
-                        <Button variant="outlined" color="error">Remove</Button>
+                        <Button variant="outlined" endIcon={<IcecreamIcon />} onclick={() => onGrantIcecream()}>Grant Icecream</Button>
+                        <Button variant="outlined" color="error" onclick={() => onExpel()}>Expel</Button>
                     </Stack>
                 }
             </TableCell>
