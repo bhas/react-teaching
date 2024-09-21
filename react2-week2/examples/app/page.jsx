@@ -89,6 +89,10 @@ export default function Home() {
     setCurrentUser(null);
   }
 
+  const handleRoleChange = (role) => {
+    setCurrentUser({ ...currentUser, role: role });
+  }
+
   const renderUnauthorizedPage = () => {
     return (
       <Stack sx={{ margin: 10 }} direction="column" alignItems="center" gap={2}>
@@ -130,7 +134,7 @@ export default function Home() {
   const renderPageContent = () => {
     return (
       <>
-        <Welcome></Welcome>
+        <Welcome onSetRole={handleRoleChange}></Welcome>
         <TeamSection users={team1} teamName={"Panda 🐼"}></TeamSection>
         <TeamSection users={team2} teamName={"Kangaroo 🦘"}></TeamSection>
       </>

@@ -1,12 +1,25 @@
 import React from 'react';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Select, MenuItem, Switch, Icon, Button, Stack } from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Select, MenuItem, Switch, Icon, Button, Stack, Chip } from '@mui/material';
 import { Roles } from '@/enums/Roles';
 import IcecreamIcon from '@mui/icons-material/Icecream';
 import SentimentVeryDissatisfiedIcon from '@mui/icons-material/SentimentVeryDissatisfied';
 
 export default function UserTableRow({ user, onGrantIcecream, onExpel }) {
 
-    const isGuardian = true;
+    const getFlavourColor = (flavour) => {
+        switch (flavour) {
+            case 'vanilla':
+                return 'success';
+            case 'chocolate':
+                return 'info';
+            case 'strawberry':
+                return 'error';
+            default:
+                return 'default';
+        }
+    }
+
+    const currentUserRole = Roles.crawer;
     return (
         <TableRow>
             <TableCell>{user.username}</TableCell>
@@ -14,16 +27,20 @@ export default function UserTableRow({ user, onGrantIcecream, onExpel }) {
                 {user.role}
             </TableCell>
             <TableCell>
-                {user.favoriteFlavour}
+                <Chip 
+                    label={user.favoriteFlavour} 
+                    size="small"
+                    color={getFlavourColor(user.favoriteFlavour)} 
+                />
             </TableCell>
             <TableCell>
                 {user.icecreams}
             </TableCell>
             <TableCell>
-                { isGuardian &&
+                { currentUserRole === Roles.guardian &&
                     <Stack direction="row" spacing={1}>
-                        <Button variant="outlined" endIcon={<IcecreamIcon />} onclick={() => onGrantIcecream()}>Grant Icecream</Button>
-                        <Button variant="outlined" color="error" onclick={() => onExpel()}>Expel</Button>
+                        <Button variant="outlined" endIcon={<IcecreamIcon />} onClick={() => onGrantIcecream()}>Grant Icecream</Button>
+                        <Button variant="outlined" color="error" onClick={() => onExpel()}>Expel</Button>
                     </Stack>
                 }
             </TableCell>
