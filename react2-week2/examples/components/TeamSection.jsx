@@ -6,16 +6,17 @@ import { Add as AddIcon } from "@mui/icons-material";
 import { Roles } from "@/enums/Roles";
 import { useContext } from "react";
 import { CurrentUserContext } from "@/contexts/CurrentUserContext";
+import { TeamMembersDispatchContext } from "@/contexts/TeamMembersContext";
 
-export default function TeamSection({ teamName, users, dispatch }) {
-
+export default function TeamSection({ team, teamName, users }) {
+  const dispatch = useContext(TeamMembersDispatchContext);
   const currentUser = useContext(CurrentUserContext);
   return (
     <>
       <Typography variant="h4" sx={{ marginTop: 5 }} component="h2">
         Team {teamName}
       </Typography>
-      <UserTable users={users} dispatch={dispatch}></UserTable>
+      <UserTable users={users}></UserTable>
       <Box
         sx={{
           display: "flex",
@@ -28,6 +29,7 @@ export default function TeamSection({ teamName, users, dispatch }) {
             color="primary"
             startIcon={<AddIcon />}
             style={{ float: "right", margin: "10px" }}
+            onClick={() => dispatch({type: 'add_member', team: team})}
           >
             Add Member
           </Button>

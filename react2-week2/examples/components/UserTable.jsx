@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Select, MenuItem, Switch, Icon } from '@mui/material';
 import UserTableRow from './UserTableRow';
 
 
-export default function UserTable({ users, dispatch }) {
+export default function UserTable({ users}) {
+
+
     return <>
         <TableContainer component={Paper}>
             <Table>
@@ -18,7 +20,7 @@ export default function UserTable({ users, dispatch }) {
                 </TableHead>
                 <TableBody>
                     {users.map((user) => (
-                        <UserTableRow key={user.username} user={user} dispatch={dispatch} />
+                        <UserTableRow key={user.username} user={user} />
                     ))}
                 </TableBody>
             </Table>

@@ -34,8 +34,6 @@ export default function Header({onLogout}) {
     onLogout();
   }
 
-  console.log(currentUser);
-
   return (
     <AppBar position="static">
       <Toolbar>

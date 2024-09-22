@@ -18,6 +18,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { CurrentUserContext } from "@/contexts/CurrentUserContext";
 import TeamMembersReducer from "@/reducers/teamMembersReducer";
+import { TeamMembersContext, TeamMembersDispatchContext } from "@/contexts/TeamMembersContext";
 
 const initialTeamMembers = [
   {
@@ -133,22 +134,25 @@ export default function Home() {
     return (
       <>
         <Welcome onSetRole={handleRoleChange}></Welcome>
-        <TeamSection users={teamMembers.filter((x) => x.team === "panda")} teamName={"Panda 🐼"} dispatch={dispatch}></TeamSection>
-        <TeamSection users={teamMembers.filter((x) => x.team === "kangaroo")} teamName={"Kangaroo 🦘"} dispatch={dispatch}></TeamSection>
-        <Button onClick={() => dispatch({type: "remove_member", memberId: 2})}>Remove</Button>
+        <TeamSection users={teamMembers.filter((x) => x.team === "panda")} team="panda" teamName={"Panda 🐼"}></TeamSection>
+        <TeamSection users={teamMembers.filter((x) => x.team === "kangaroo")} team="kangaroo" teamName={"Kangaroo 🦘"}></TeamSection>
       </>
     );
   };
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <Container className={styles.container} maxWidth="md">
-        <Header onLogout={handleOnLogout}></Header>
-        <Box sx={{ margin: 3 }}>
-          {!currentUser ? renderUnauthorizedPage() : renderPageContent()}
-        </Box>
-        <Footer></Footer>
-      </Container>
+      <TeamMembersContext.Provider value={teamMembers}>
+        <TeamMembersDispatchContext.Provider value={dispatch}>
+          <Container className={styles.container} maxWidth="md">
+            <Header onLogout={handleOnLogout}></Header>
+            <Box sx={{ margin: 3 }}>
+              {!currentUser ? renderUnauthorizedPage() : renderPageContent()}
+            </Box>
+            <Footer></Footer>
+          </Container>
+        </TeamMembersDispatchContext.Provider>
+      </TeamMembersContext.Provider>
     </CurrentUserContext.Provider>
   );
 }
