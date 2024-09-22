@@ -3,7 +3,7 @@ import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper
 import UserTableRow from './UserTableRow';
 
 
-export default function UserTable({ users }) {
+export default function UserTable({ users, dispatch }) {
     return <>
         <TableContainer component={Paper}>
             <Table>
@@ -18,7 +18,7 @@ export default function UserTable({ users }) {
                 </TableHead>
                 <TableBody>
                     {users.map((user) => (
-                        <UserTableRow key={user.username} user={user} />
+                        <UserTableRow key={user.username} user={user} dispatch={dispatch} />
                     ))}
                 </TableBody>
             </Table>

@@ -5,7 +5,7 @@ import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import Button from "@mui/material/Button";
-import { useState } from "react";
+import { useReducer, useState } from "react";
 import Welcome from "@/components/Welcome";
 import UserTable from "@/components/UserTable";
 import { Roles } from "@/enums/Roles";
@@ -17,8 +17,9 @@ import styles from "./page.module.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { CurrentUserContext } from "@/contexts/CurrentUserContext";
+import TeamMembersReducer from "@/reducers/teamMembersReducer";
 
-const teamMembers = [
+const initialTeamMembers = [
   {
     id: 1,
     team: "panda",
@@ -79,12 +80,8 @@ const teamMembers = [
 
 export default function Home() {
   const [currentUser, setCurrentUser] = useState(null);
-  const [team1, setTeam1] = useState(
-    teamMembers.filter((x) => x.team === "panda")
-  );
-  const [team2, setTeam2] = useState(
-    teamMembers.filter((x) => x.team === "kangaroo")
-  );
+  const [teamMembers, dispatch] = useReducer(TeamMembersReducer, initialTeamMembers);
+
 
   const handleOnLogout = () => {
     setCurrentUser(null);
@@ -136,8 +133,9 @@ export default function Home() {
     return (
       <>
         <Welcome onSetRole={handleRoleChange}></Welcome>
-        <TeamSection users={team1} teamName={"Panda 🐼"}></TeamSection>
-        <TeamSection users={team2} teamName={"Kangaroo 🦘"}></TeamSection>
+        <TeamSection users={teamMembers.filter((x) => x.team === "panda")} teamName={"Panda 🐼"} dispatch={dispatch}></TeamSection>
+        <TeamSection users={teamMembers.filter((x) => x.team === "kangaroo")} teamName={"Kangaroo 🦘"} dispatch={dispatch}></TeamSection>
+        <Button onClick={() => dispatch({type: "remove_member", memberId: 2})}>Remove</Button>
       </>
     );
   };

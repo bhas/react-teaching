@@ -3,36 +3,32 @@
 Introduction
     Last weeks topic: Routing, refs, component library
     how it is going?
-
+    Today scaling your application
+    Becoming familiar with material UI (optional)
 
 
 
 Context
-
-    What is the Context API?
-        solves prop drilling and global state
-
+    What Context?
     When to use Context API?
-        ask class?
-
-    Benefits of using Context API
-        class exercise
-
-    Providing values using a Context
-
-    receiving values from a Context
-
-    updating values in a Context
-
+    1. Create the context
+    2. Create a provider for the context
+    3. useContext to get the value
 
 Context exercise
-    create theme provider
+    create theme provider with Mat UI
     using mat ui with globalization
 
 
 
-Reducer
 
+
+Reducer
+    what is a reducer
+    when to use reducers
+    1. replace handlers with dispatch functions
+    2. create reducer functions
+    3. use your reducer
 
 Reducer exercises
     Build counter context

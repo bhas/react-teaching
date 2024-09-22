@@ -7,7 +7,7 @@ import { Roles } from "@/enums/Roles";
 import { useContext } from "react";
 import { CurrentUserContext } from "@/contexts/CurrentUserContext";
 
-export default function TeamSection({ teamName, users }) {
+export default function TeamSection({ teamName, users, dispatch }) {
 
   const currentUser = useContext(CurrentUserContext);
   return (
@@ -15,7 +15,7 @@ export default function TeamSection({ teamName, users }) {
       <Typography variant="h4" sx={{ marginTop: 5 }} component="h2">
         Team {teamName}
       </Typography>
-      <UserTable users={users}></UserTable>
+      <UserTable users={users} dispatch={dispatch}></UserTable>
       <Box
         sx={{
           display: "flex",
