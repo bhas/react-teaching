@@ -47,21 +47,17 @@ function addComment(username, commentText) {
 
 <details>
   <summary>Click here to see how it will look</summary>
-  ![JS-vs-React](/react1-week1/assets/js-ui.jpg)
+
+  ![test](/react1-week1/assets/js-ui.jpg)
+
 </details>
 
-From the above code we already see a few annoying things:
+
 
 > [!CAUTION]
+> From the above code we already see a few annoying things:
 > - HTML cannot be mixed with JS but instead relys on DOM manipulations using JS
-> - JS requires us to manually keeping track of the state of each part of the UI using veriables and event listeners. This makes it difficult to manage as the app grows.
-> - Negative potential consequences of an action.
-
-> ❌ HTML cannot be mixed with JS but instead relys on DOM manipulations using JS
-
-> ❌ 
-
-❌
+> - JS requires us to manually keeping track of the state of each part of the UI using variables and event listeners. This makes it difficult to manage as the app grows.
 
 In comparison this is how the same code would look in React:
 ```jsx
@@ -93,6 +89,11 @@ function Comment({username, commentText}) {
 }
 ```
 
+> [!TIP]
+> Declarative vs Imperative - Declarative means we declare what we want, Imperative means we describe how to do it. 
+>
+> Example - Calling a pizzaria and telling them which pizzas we want is a declarative approach. Calling the pizzaria and telling them each step to cook our pizza would be an imperative approach.
+
 | JS    | React |
 | -------- | ------- |
 | ❌ Does not allow us to mix HTML and JS | ✅ Enables us to write JSX which has a syntax very similar to HMTL    |
@@ -102,7 +103,3 @@ function Comment({username, commentText}) {
 | ❌ Has limited tools available | ✅ Has a very active community and a vast number of libraries free of use |
 | ❌ Is rarely used for bigger applications | ✅ Is currently one of the JS-based libraries in highest demand |
 
-> [!TIP]
-> Declarative vs Imperative - Declarative means we declare what we want, Imperative means we describe how to do it. 
->
-> Example - Calling a pizzaria and telling them which pizzas we want is a declarative approach. Calling the pizzaria and telling them each step to cook our pizza would be an imperative approach.
