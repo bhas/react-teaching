@@ -1,26 +1,18 @@
 
-# Why React and Next.js?
+## What is React?
 
-challenge with JS
- - JS is imperative
- - JS is separate from HTML
- - JS becomes hard to maintain as code base grows
- 
+Challenges with JS (see [Why React](examples/why-react.md))
 
+What is React/JSX
+ * html in javascript
 
-
-What is React / JSX
-
-html in javascript
-
-thinking in components
-
-
-
+Thinking in components (class exercise)
+ * Reusable pieces of UI that looks and behaves similarly
+ * UI logically belonging together with a core function
 
 # What is Next.js
 
-what is a framework
+what is a framework vs library
 
 Setting up the Next App (Create-next-app)
 

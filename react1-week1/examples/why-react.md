@@ -56,7 +56,7 @@ function addComment(username, commentText) {
 
 > [!CAUTION]
 > From the above code we already see a few annoying things:
-> - HTML cannot be mixed with JS but instead relys on DOM manipulations using JS
+> - HTML cannot be mixed with JS but instead relies on DOM manipulations using JS. This makes it hard to understand what the generated HTML will look like. 
 > - JS requires us to manually keeping track of the state of each part of the UI using variables and event listeners. This makes it difficult to manage as the app grows.
 
 In comparison this is how the same code would look in React:
@@ -96,7 +96,7 @@ function Comment({username, commentText}) {
 
 | JS    | React |
 | -------- | ------- |
-| ❌ Does not allow us to mix HTML and JS | ✅ Enables us to write JSX which has a syntax very similar to HMTL    |
+| ❌ Does not allow us to mix HTML and JS | ✅ JSX enables us to write HTML inside our JS   |
 | ❌ Is imperative which means we have to define all steps (DOM manipulations) to achieve our goal | ✅ Is declarative which means we can just declare our goal and React will figure out what to do |
 | ❌ Requires us to manually maintain the state of the UI elements | ✅ Has build-in support for components and easy ways of managing their state     |
 | ❌ Frequent DOM updates can be slow | ✅ Is fast by using an in-memory virtual DOM to effeciently calculate which DOM updates are required |
