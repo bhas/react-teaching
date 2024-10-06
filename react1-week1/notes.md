@@ -34,9 +34,10 @@
 
 ## Creating components in JSX
 - return syntax
+- setting attributes with variables
 - JS in HTML using `{ ... }`
 - Using components in components
-- setting attributes with variables
+
 - common pitfalls ![Exercise](https://img.shields.io/badge/Quiz-orange)
    - Uppercase function name
    - return without `()`
@@ -46,12 +47,14 @@
    - use className for styling
    - using {} when executing JS
 
-## Using code from other files
- - default and named exports and imports
-
  ## More Next.js
  - Styling in Next.js ![Class Exercise](https://img.shields.io/badge/Class_exercise-darkgreen)
     - inline
     - component
     - global
+
+## Using code from other files
+ - default and named exports and imports
+
+
 
