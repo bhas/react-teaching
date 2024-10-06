@@ -1,4 +1,6 @@
 
+![Pause](/react1-week1/assets/react1.jpg)
+
 ## Introduction to React
 
 - Challenges with JS (see [Why React](examples/why-react.md)) ![Exercise](https://img.shields.io/badge/Example-blue)
@@ -7,31 +9,49 @@
    - JSX (HTML in JS)
    - Components
 
-- Why React ![Exercise](https://img.shields.io/badge/ChatGPT-orange)
+- Why React ![Exercise](https://img.shields.io/badge/ChatGPT-black)
 
 - What are Components ![Class Exercise](https://img.shields.io/badge/Class_exercise-darkgreen)
    - Similar looking UI
    - Logically grouped UI
    - parent / child relationship
 
-# Introduction to Next.js
+- Why Components ![Exercise](https://img.shields.io/badge/ChatGPT-black)
+
+## Introduction to Next.js
 
  - What is Next.js ![Exercise](https://img.shields.io/badge/Example-blue)
+ - Why Next.js ![Exercise](https://img.shields.io/badge/ChatGPT-black)
  - Creating a Next.js app with `npx create-next-app@latest` ![Class Exercise](https://img.shields.io/badge/Class_exercise-darkgreen)
  - Next.js folder structure
- - App, layout, & routing ![Class Exercise](https://img.shields.io/badge/Class_exercise-darkgreen)
- - Styling ![Class Exercise](https://img.shields.io/badge/Class_exercise-darkgreen)
-
- ---
- ---
- # Pause
- ---
- ---
-
-
-# Building components using JSX
+ - Pages ![Class Exercise](https://img.shields.io/badge/Class_exercise-darkgreen)
+ - Routing ![Class Exercise](https://img.shields.io/badge/Class_exercise-darkgreen)
 
 
 
+![Pause](/react1-week1/assets/pause.jpg)
 
+
+## Creating components in JSX
+- return syntax
+- JS in HTML using `{ ... }`
+- Using components in components
+- setting attributes with variables
+- common pitfalls ![Exercise](https://img.shields.io/badge/Quiz-orange)
+   - Uppercase function name
+   - return without `()`
+   - nested component definitions
+   - missing import
+   - using `<>` when multiple components
+   - use className for styling
+   - using {} when executing JS
+
+## Using code from other files
+ - default and named exports and imports
+
+ ## More Next.js
+ - Styling in Next.js ![Class Exercise](https://img.shields.io/badge/Class_exercise-darkgreen)
+    - inline
+    - component
+    - global
 
